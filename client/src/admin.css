@@ -1,0 +1,228 @@
+/* Panel */
+
+.navbar {
+  margin-left: 0;
+  padding-right: 0 !important;
+}
+
+.navbar-collapse {
+  margin-right: 0;
+}
+
+.text-center {
+    text-align: center;
+  }
+  .col-panel {
+    background-color: #eeeeee;
+    padding: 50px;
+    padding-left: 25px;
+  }
+  .txt-tittle-admin {
+    margin-bottom: 70px;
+  }
+  .txt-tittle-statistics {
+    margin-bottom: 30px;
+  }
+  .card {
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  }
+  .table-responsive {
+    margin-top: 20px;
+    animation-name: opp;
+    animation-duration: 1.1s;
+  }
+  .card-header-primary {
+    background-color: #1d93fb !important;
+    margin-top: -30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+  .col-panel td,
+  th {
+    padding-top: 17px !important;
+    padding-bottom: 17px !important;
+  }
+  .col-panel th {
+    border-top: 0px;
+    padding-bottom: 19px !important;
+  }
+  .div-appear {
+    display: flex;
+    justify-content: center;
+    height: 772px;
+    width: 100%;
+  }
+  /* Login */
+  .card-admin-log {
+    border-radius: 0px;
+    border: 0px;
+    padding: 20px;
+  }
+  .card-admin-log input {
+    border-radius: 0px;
+    border: 0px;
+    padding: 20px;
+    border-bottom: solid 1px #dcdcdc;
+  }
+  .card-admin-log input:hover {
+    border-bottom: solid 2px grey;
+    margin-top: -1px;
+  }
+  .card-admin-log input:focus {
+    border-color: inherit;
+    box-shadow: none;
+    outline: none !important;
+    border-bottom: solid 2px #3483fa;
+    margin-top: -1px;
+  }
+  .form-login {
+    margin: 50px;
+  }
+  .div-btn {
+    margin-top: 70px;
+  }
+  .div-flex {
+    display: flex;
+  }
+  .input-pass {
+    width: 90%;
+  }
+  .icon-pass {
+    margin-left: 4%;
+    font-size: 22px;
+    cursor: pointer;
+  }
+  /* NavBar */
+  .icon-ad {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+  .vertical-line {
+    border-left: 1px solid rgb(199, 198, 198);
+    height: 30px;
+    margin-right: 15px;
+  }
+  .iralapagina:hover {
+    transform: scale(1.1);
+  }
+  .border-bottom {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  }
+  /* SideNav */
+  .col-sidenav {
+    background-color: #eeeeee;
+  }
+  .bg-white {
+    box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px,
+      rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  }
+  .blank-space-snav {
+    height: 380px;
+  }
+  .btnlog {
+    width: 100%;
+    height: 40px;
+  }
+  /* Setting */
+  .row-setting button {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 45px;
+  }
+  .row-setting {
+    margin-bottom: 50px;
+  }
+  .card-setting {
+    background-color: #ffffff;
+    border: 0px;
+    margin-top: -20px;
+    padding: 10px;
+  }
+  .action-btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .div-pagination {
+    float: right;
+  }
+  .items {
+    margin-top: 30px;
+  }
+  /* Animations */
+  @keyframes opp {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  /* Charts */
+  .row-status {
+    margin-top: -30px;
+  }
+  .div-status {
+    margin-bottom: 20px;
+  }
+  /* Dashboard */
+  .line-cyan {
+    border-top: 3px solid #17a2b8;
+  }
+  .line-red {
+    border-top: 3px solid red;
+  }
+  .line-blue {
+    border-top: 3px solid #007bff;
+  }
+  .line-orange {
+    border-top: 3px solid #fd7e14;
+  }
+  .textheader-dh {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #4c4e61;
+  }
+  .textbody-dh {
+    margin: 0 auto;
+    color: #a9a8ae;
+  }
+  .icon-cyan {
+    color: #17a2b8;
+  }
+  .icon-blue {
+    color: #007bff;
+  }
+  .icon-orange {
+    color: #fd7e14;
+  }
+  .div-bg-login {
+    background-color: #eeeeee;
+    padding-bottom: 50px;
+    padding-top: 50px;
+  }
+  .panel-cont-bg {
+    background-color: #eeeeee;
+    padding-right: 20%;
+    padding-left: 20%;
+  }
+  .requeried {
+    color: red;
+  }
+  /* Icons */
+  .icon-delete,
+  .icon-edit {
+    color: #0d6efd;
+    cursor: pointer;
+  }
+  .icon-delete:hover,
+  .icon-edit:hover {
+    color: #055bdb;
+  }
+  .icon {
+    margin-top: -6px;
+  }

@@ -1,0 +1,567 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:wght@400;500&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+
+/*------------Global----------*/
+.container {
+  max-width: 80%;
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* to ensure vertical alignment */
+}
+
+ul {
+  list-style: none;
+  padding: 0; /* removing any default padding */
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* Global */
+/* Styles for the navbar links */
+.navbar-nav .nav-link {
+  text-decoration: none;
+  color: black;
+}
+
+/* Styles for the navbar itself */
+.navbar {
+  padding: 15px 0;
+  margin-left: 20px;
+}
+
+/* Adjust styles for the nav links */
+.navbar-collapse {
+  flex-grow: 1; /* to occupy the available space in between */
+  display: flex;
+  margin-right: 75px;
+  justify-content: center; /* to center the list items */
+  align-items: center; /* to ensure vertical alignment */
+  align-content: center; /* to ensure vertical alignment */
+}
+
+
+/* Styles for the list items within the navbar */
+.navbar-nav {
+  display: flex;
+  justify-content: center; /* centering the list items horizontally */
+  align-items: center; /* to ensure vertical alignment */
+}
+
+.navbar-nav .nav-item {
+  margin-left: 75px;
+}
+
+.navbar-nav .nav-item:last-child {
+  margin-left: 75px;
+}
+.navbar-nav .nav-link {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+/* You are using a Link as a button, so the following selector will adjust the styles for it */
+.navbar-nav .btn {
+  font-weight: 550; /* Adjust to a higher value for more boldness */
+}
+
+.navbar-nav .nav-link:hover {
+  color: green !important;
+  /* Smoother transition */
+}
+
+/* If you ever add the 'active' class to the navbar, these styles will be applied */
+.navbar.active {
+  position: sticky;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 28px 0 rgb(0 0 0 / 6%);
+  width: 100%;
+  z-index: 10;
+}
+
+
+/* Hero */
+section.hero {
+  margin: 5rem 0;
+}
+
+.cbd {
+  color: black !important;
+}
+
+.cta button {
+  font-weight: 500;
+}
+
+.text-label,
+.text-hero-bold,
+.text-hero-regular {
+  margin: 24px 0;
+}
+
+.text-label {
+  color: darkgreen;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+.text-hero-bold {
+  color: var(--primary);
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 70px;
+}
+
+.lazy {
+  min-height: 400px;
+  max-height: auto;
+  float: left;
+}
+
+.text-hero-regular {
+  color: var(--primary);
+  font-size: 1.3rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 30px;
+}
+
+@media (min-width: 1399.98px) {
+  .container {
+    width: 84%;
+  }
+
+}
+
+/* MOBILE PHONE VIEW */
+@media (max-width: 576px) {
+  
+  .navbar {
+    padding: 28px 0;
+  }
+  a.nav-link {
+    margin-right: 7px 0;
+  }
+
+  section.hero {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .btn {
+    display: block;
+    margin: 1rem 0;
+  }
+
+  .copy {
+    font-align: center;
+  }
+
+  .copy a {
+    color: #fff !important;
+  }
+
+  .text-label,
+  .text-hero-bold,
+  .text-hero-regular {
+  text-align: center;
+}
+
+  .text-hero-bold {
+  font-weight: bold;
+  line-height: 64px;
+}
+  
+  section.hero img {
+    margin: 5rem;
+  }
+  .about-container {
+    padding: 50px 0;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* TABLET VIEW */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px 0;
+  }
+  a.nav-link {
+    margin-right: 7px 0;
+  }
+  section.hero {
+    margin: 1rem 0;
+  }
+  .text-hero-bold {
+    font-weight: bold;
+    line-height: 64px;
+  }
+  section.hero img {
+    margin: 2rem 0;
+  }
+  footer {
+    padding: 2rem;
+  }
+}
+
+/*-----------------------------------*\
+  #SERVICE
+\*-----------------------------------*/
+
+.service { text-align: center; }
+
+.service .section-text { margin-block: 15px 55px; }
+
+.service-card {
+  background-color: var(--white);
+  padding: 25px 25px;
+  box-shadow: var(--shadow-1);
+  border-radius: var(--radius-8);
+}
+
+.section-title {
+  font-weight: bold;
+  font-size: 3.2rem;
+}
+
+.card-icon {
+  margin-bottom: 20px; /* Add some space below the icon/image */
+}
+
+.card-icon img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  transform: translate3d(0, 0, 1px);
+  margin: 0 auto;
+  display: block; /* To maintain the aspect ratio and cover the width/height */
+}
+
+
+.service-card .card-title {
+  margin-block: 15px 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition-1);
+}
+
+.service-card .card-text { margin-block-end: 15px; }
+
+.service-card .card-btn {
+  color: var(--indian-yellow);
+  background-color: var(--white);
+  max-width: max-content;
+  margin-inline: auto;
+  font-size: 20px;
+  padding: 10px;
+  box-shadow: var(--shadow-2);
+  border-radius: var(--radius-5);
+  transition: var(--transition-2);
+}
+
+.service-card:is(:hover, :focus-within) .card-btn {
+  color: var(--white);
+}
+
+.service-card {
+  transition: transform 0.3s ease; /* smooth transition for transform property */
+}
+
+.service-card:hover {
+  transform: scale(1.05); /* magnify the card by 5% */
+}
+
+@media (max-width: 1160px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .col-12.col-md-4.mb-4 {
+    /* Adjust width as needed to fit the content appropriately */
+    width: 100%;
+  }
+}
+
+/* FOOTER */
+footer {
+  padding: 40px 0;
+  background-color: lightgreen;
+}
+
+footer img {
+  width: 150px;
+}
+
+footer p {
+  color: black; /* Change color to white to match footer color */
+  font-size: 1rem;
+  margin: 20px 0;
+}
+
+footer h2 {
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
+footer li {
+  color: black;
+  margin-bottom: 15px;
+  list-style-type: none; /* Removes the bullet point */
+}
+
+footer .box p {
+  margin: 0;
+  margin-top: 15px;
+}
+
+footer span {
+  opacity: 1;
+}
+
+footer ion-icon {
+  font-size: 30px;
+  color: black;
+  margin-right: 10px;
+}
+footer ion-icon:nth-child(1) {
+  color: darkblue;
+}
+footer ion-icon:nth-child(2) {
+  color: purple;
+}
+footer ion-icon:nth-child(3) {
+  color: lightblue;
+}
+footer ion-icon:nth-child(4) {
+  color: red;
+}
+
+@media (max-width: 1200px) {
+  .footer-col {
+    flex: 0 0 25% !important; /* Equivalent to col-md-3 */
+    max-width: 25% !important; /* Override Bootstrap's styles */
+  }
+}
+
+.legal {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  margin-top: 60px;
+  padding: 10px 0;
+}
+
+/* SERVICES IMAGE SECTION */
+
+.about-container h2 {
+  margin-bottom: 40px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 3.2rem;
+  font-weight: bold;
+  /* line-height: 1.2rem; */
+}
+
+.about-container p{
+  padding: 40px 0;
+}
+
+.profile-img {
+  max-width: 100%;
+  border-radius: 50%;
+}
+
+/*=============== CONTACT ===============*/
+.form-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-text {
+  font-weight: bold;
+  font-size: 3.2rem;
+
+}
+
+/* CALENDAR */
+
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.react-calendar { 
+  width: 500px;
+  height: auto;
+  max-width: 100%;
+  background-color: #fff;
+  color: #222;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  font-family: Poppins, sans-serif;
+  line-height: 1.125em;
+  padding: 1.25em;
+  margin-top: 2rem;
+ }
+ .react-calendar__navigation button {
+  color: #6f48eb;
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+  margin-top: 8px;
+ }
+ .react-calendar__navigation button:enabled:hover,
+ .react-calendar__navigation button:enabled:focus {
+  background-color: #f8f8fa;
+  transition: background-color 0.5s ease;
+ }
+ .react-calendar__navigation button[disabled] {
+  background-color: #f0f0f0;
+ }
+ abbr[title] {
+  text-decoration: none;
+ }
+ /* .react-calendar__month-view__days__day--weekend {
+  color: #d10000;
+ } */
+ .react-calendar__tile:enabled:hover,
+ .react-calendar__tile:enabled:focus {
+  background: #f8f8fa;
+  color: #6f48eb;
+  border-radius: 6px;
+ }
+ .react-calendar__tile--now {
+  background: #6f48eb33;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #6f48eb;
+ }
+ .react-calendar__tile--now:enabled:hover,
+ .react-calendar__tile--now:enabled:focus {
+  background: #6f48eb33;
+  border-radius: 6px;
+  font-weight: bold;
+  color: #6f48eb;
+ }
+ .react-calendar__tile--hasActive:enabled:hover,
+ .react-calendar__tile--hasActive:enabled:focus {
+  background: #f8f8fa;
+ }
+ .react-calendar__tile--active {
+  background: #6f48eb;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+ }
+ .react-calendar__tile--active:enabled:hover,
+ .react-calendar__tile--active:enabled:focus {
+  background: #6f48eb;
+  color: white;
+ }
+ .react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #f8f8fa;
+ }
+ .react-calendar__tile--range {
+  background: #f8f8fa;
+  color: #6f48eb;
+  border-radius: 0;
+ }
+ .react-calendar__tile--rangeStart {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background: #6f48eb;
+  color: white;
+ }
+ .react-calendar__tile--rangeEnd {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background: #6f48eb;
+  color: white;
+ }
+
+ .slot-item {
+  text-align: center;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.slots-container {
+  justify-content: center;
+  align-items: center;
+  margin-top: 4.5rem;
+  height: 350px; /* or any other preferred value */
+  overflow-y: auto; /* this will make it scrollable when content exceeds max-height */
+  overflow-x: hidden;
+  width: 50%;
+}
+
+.slot-item:hover {
+  background: #f8f8fa;
+  color: #6f48eb;
+  border-radius: 6px;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.selected-slot {
+  background: #f8f8fa;
+  color: #6f48eb;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Width */
+.slots-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.slots-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.slots-container::-webkit-scrollbar-thumb {
+  background: #6f48eb;  /* You can change it to the color you want */
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+.slots-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.slots-container {
+  scrollbar-width: thin;
+  scrollbar-color: #6f48eb #f1f1f1;
+}
+
+/* ADMIN DASHBOARD */
