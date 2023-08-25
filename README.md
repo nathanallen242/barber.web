@@ -8,13 +8,10 @@ Welcome to **Barber.io**, a client management application designed to streamline
 
 - **Appointment Scheduling**: Easily schedule and manage appointments for clients. View available time slots and book appointments accordingly.
 
-- **Notifications**: Send automated reminders and notifications to clients about upcoming appointments, ensuring they never miss their scheduled time.
-
 - **Services and Pricing**: Provide a clear list of services offered by your barbershop along with corresponding prices for easy reference.
 
 - **Staff Management**: Assign appointments to specific barbers/stylists and manage their availability.
 
-- **Reporting**: Generate reports on appointments, revenue, and other key metrics to gain insights into your business's performance.
 
 ## Installation
 
