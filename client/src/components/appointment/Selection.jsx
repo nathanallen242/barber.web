@@ -1,9 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import hairCut from './service_assets/hair-cut.jpg';
+import cleanShaving from './service_assets/shave.jpg';
+import beardTrimming from './service_assets/beard.jpg';
 
 function ServiceSelection({ onServiceSelect, initialValue }) {
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [selectedService, setSelectedService] = useState(initialValue);
+
+    const serviceImageMap = {
+        'Hair Cut': hairCut,
+        'Clean Shaving': cleanShaving,
+        'Beard Trimming': beardTrimming
+    };
 
     useEffect(() => {
         const fetchServices = async () => {
@@ -23,6 +33,11 @@ function ServiceSelection({ onServiceSelect, initialValue }) {
         fetchServices();
     }, []);
 
+    const handleServiceClick = (serviceName) => {
+        setSelectedService(serviceName);
+        onServiceSelect(serviceName);
+    };
+
     if (loading) {
         return (
             <div className="text-center">
@@ -34,23 +49,21 @@ function ServiceSelection({ onServiceSelect, initialValue }) {
     }
 
     return (
-        <div>
+        <div className="services-center">
             <label>Select a service:</label>
-            <select 
-                value={initialValue}
-                onChange={(e) => {
-                    const selectedService = e.target.value;
-                    console.log("Selected service:", selectedService);
-                    onServiceSelect(selectedService);
-                }}
-            >
-                <option value="">Select...</option>
+            <p>Please click on a service image to select it.</p>
+            <div className="services-grid">
                 {services.map(service => (
-                    <option key={service.service_id} value={service.service_name}>
-                        {service.service_name}
-                    </option>
+                    <div 
+                        key={service.service_id} 
+                        className={`service-container ${selectedService === service.service_name ? 'selected' : ''}`} 
+                        onClick={() => handleServiceClick(service.service_name)}
+                    >
+                        <img src={serviceImageMap[service.service_name]} alt={service.service_name} />
+                        <span>{service.service_name}</span>
+                    </div>
                 ))}
-            </select>
+            </div>
         </div>
     );
 }
