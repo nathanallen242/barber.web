@@ -52,6 +52,30 @@ exports.findOne = async (req, res) => {
   }
 };
 
+// Function to fetch weekly availability of a barber
+exports.getWeeklyAvailability = async (req, res) => {
+  const employee_id = req.params.id;
+
+  try {
+    const schedules = await EmployeesSchedule.findAll({
+      where: { employee_id: employee_id },
+      attributes: ['day_id'], // fetch only day_id
+    });
+
+    if (!schedules || schedules.length === 0) {
+      return res.status(404).send({ message: "No schedule found for employee_id=" + employee_id });
+    }
+
+    // Extracting day_ids and removing duplicates if any
+    const availability = [...new Set(schedules.map(schedule => schedule.day_id))];
+    
+    res.send(availability);
+  } catch (err) {
+    res.status(500).send({ message: "Error retrieving weekly availability for employee_id=" + employee_id });
+  }
+};
+
+
 
 // Update an EmployeesSchedule by the id in the request
 exports.update = async (req, res) => {

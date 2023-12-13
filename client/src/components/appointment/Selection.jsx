@@ -22,6 +22,7 @@ function ServiceSelection({ onServiceSelect, initialValue }) {
                 const response = await axios.get('http://localhost:8080/api/services');
                 if (response.data) {
                     setServices(response.data);
+                    console.log(response.data)
                 }
             } catch (error) {
                 console.error("Failed to fetch services", error);

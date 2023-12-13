@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 import axios from 'axios';
 
 function BarberSelection({ onBarberSelect, initialValue }) {
@@ -35,25 +36,40 @@ function BarberSelection({ onBarberSelect, initialValue }) {
         );
     }
 
+    const options = barbers.map(barber => ({
+        value: barber.employee_id,
+        label: `${barber.first_name} ${barber.last_name}`
+    }));
+
+    const customStyles = {
+        control: (provided) => ({
+            ...provided,
+            padding: '8px 12px',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+            '&:hover': { borderColor: '#888' }
+        }),
+        option: (provided) => ({
+            ...provided,
+            color: 'black', // Add other styles for options here
+        }),
+        // Add additional style overrides here
+    };
+
+    const handleChange = selectedOption => {
+        onBarberSelect(barbers.find(barber => barber.employee_id === selectedOption.value));
+        console.log("Selected barber:", selectedOption);
+    };
+
     return (
-        <div>
-            <label>Select a barber:</label>
-            <select 
-                value={initialValue ? initialValue.employee_id : ''}
-                onChange={(e) => {
-                    const selectedBarberId = e.target.value;
-                    const selectedBarber = barbers.find(barber => barber.employee_id === parseInt(selectedBarberId));
-                    console.log("Selected barber:", selectedBarber);
-                    onBarberSelect(selectedBarber);
-                }}
-            >
-                <option value="">Select...</option>
-                {barbers.map(barber => (
-                    <option key={barber.employee_id} value={barber.employee_id}>
-                        {barber.first_name} {barber.last_name}
-                    </option>
-                ))}
-            </select>
+        <div className="barber-selection-container">
+            <label className="barber-selection-label">Select a barber:</label>
+            <Select 
+                styles={customStyles}
+                options={options}
+                onChange={handleChange}
+                value={options.find(option => option.value === (initialValue ? initialValue.employee_id : ''))}
+            />
         </div>
     );
 }

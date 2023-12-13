@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-function CustomCalendar({ onDateClick, availableSlots, onSlotClick, selectedDate }) {
+function CustomCalendar({ onDateClick, availableSlots, onSlotClick, selectedDate, weeklyAvailability }) {
     const [selectedSlotValue, setSelectedSlotValue] = useState(null);
 
     const handleDateChange = (date) => {
@@ -28,13 +28,25 @@ function CustomCalendar({ onDateClick, availableSlots, onSlotClick, selectedDate
         }
     };
 
+    const isDayUnavailable = (date) => {
+        const dayOfWeek = date.getDay(); // Sunday = 0, Monday = 1, etc.
+        // Adjusting the dayOfWeek to match your day_id (assuming day_id 1 = Sunday, 2 = Monday, etc.)
+        const dayId = dayOfWeek + 1;
+        return !weeklyAvailability.includes(dayId);
+    };
+
     return (
         <div className="font-weight-500 justify-content-center">
-            <h1 className="text-center font-weight-bold">React Calendar</h1>
+            <h1 className="text-center font-weight-bold">Calendar Availability</h1>
             <div className="row">
                 <div className="col-md-6">
                     <div className="calendar-container">
-                        <Calendar onChange={handleDateChange} value={selectedDate} />
+                        <Calendar 
+                        onChange={handleDateChange}
+                        value={selectedDate}
+                        tileClassName={({ date, view }) =>
+                        view === 'month' && isDayUnavailable(date) ? 'unavailable-day' : ''
+                    } />
                     </div>
                 </div>
                 <div className="col-md-6 slots-container">

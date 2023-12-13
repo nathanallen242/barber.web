@@ -18,14 +18,31 @@ function Callback() {
         return (
             <div className="modal-background">
                 <div className="modal-content">
+                    <span className="close-icon" onClick={onClose}>×</span> {/* Close Icon */}
                     <p>{message}</p>
-                    <button onClick={onClose}>Close</button>
+                    
+                    {/* Return to Homepage Button */}
+                    <button 
+                        className="btn btn-primary" 
+                        onClick={() => navigate('/')}
+                    >
+                        Return to Homepage
+                    </button>
+    
+                    {/* Add to Google Calendar Button */}
+                    <button 
+                        className="btn btn-secondary" 
+                        onClick={handleAddToGoogleCalendar}
+                    >
+                        Add to Google Calendar
+                    </button>
                 </div>
             </div>
         );
     }
+    
     function closeModal() {
-        setIsModalOpen(false);
+        navigate('/');
     }
 
     // Extract appointment details and format them for Google Calendar
@@ -97,31 +114,8 @@ function Callback() {
     }, [location, navigate]);
 
     return (
-        <>
-            <Modal isOpen={isModalOpen} message={modalMessage} onClose={closeModal} />
-            {appointmentConfirmed && (
-                <div className="callback-container">
-                <h2>Appointment Confirmed</h2>
-
-                {/* Return to Homepage Button */}
-                <button 
-                    className="btn btn-primary" 
-                    onClick={() => navigate('/')} // Adjust the path as needed
-                >
-                    Return to Homepage
-                </button>
-
-                {/* Add to Google Calendar Button */}
-                <button 
-                    className="btn btn-secondary mt-3 ml-2" 
-                    onClick={handleAddToGoogleCalendar}
-                >
-                    Add to Google Calendar
-                </button>
-            </div>
-            )};
-        </>
-    );    
+        <Modal isOpen={isModalOpen} message={modalMessage} />
+    ); 
 }
 
 export default Callback;

@@ -23,12 +23,16 @@ function AppointmentPage() {
             </div>
 
             {/* Navigation buttons */}
-            <div className="mt-3">
+            <div className="navigation-buttons mt-3 text-center">
                 {currentStep > 1 && currentStep < 5 && !appointmentConfirmed && 
-                    <button className="btn btn-secondary mr-2" onClick={() => setCurrentStep(currentStep - 1)}>Back</button>
+                    <button className="btn btn-secondary mr-2" onClick={() => setCurrentStep(currentStep - 1)}>
+                        <i className="fas fa-arrow-left"></i>
+                    </button>
                 }
                 {currentStep < 4 && 
-                    <button className="btn btn-primary" onClick={moveForward}>Next</button>
+                    <button className="btn btn-primary ml-2" onClick={moveForward}>
+                        <i className="fas fa-arrow-right"></i>
+                    </button>
                 }
             </div>
         </div>

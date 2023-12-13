@@ -6,6 +6,8 @@ import ClientInfoForm from '../components/appointment/ClientInfoForm.jsx';
 import AppointmentDataService from '../services/appointmentService.js';
 import { useNavigate } from 'react-router-dom';
 import { errorMessages, isFutureDate, isValidEmail, isValidPhoneNumber } from '../utils/validation.js';
+import { TailSpin } from 'react-loader-spinner';
+import { FaCheckCircle } from 'react-icons/fa';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -30,6 +32,11 @@ function useAppointment() {
     // Other states
     const [currentStep, setCurrentStep] = useState(1);
     const [errors, setErrors] = useState({});
+
+    // Appointment states
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showSuccessCheckmark, setShowSuccessCheckmark] = useState(false);
+
 
     const navigate = useNavigate();  // React Router hook for navigation
 
@@ -150,8 +157,9 @@ function useAppointment() {
             const confirmed = window.confirm("Are you sure you want to book this appointment?");
             if (!confirmed) return;
             if (selectedDate && selectedTimeSlot) {
+                setIsSubmitting(true); // Start loading
+                
                 const { startTime, endTime } = formatDateTime(selectedDate, selectedTimeSlot);
-
                 const eventStartTime = toISOStringFormat(selectedDate, selectedTimeSlot);
                 const endTimeDate = new Date(new Date(eventStartTime).getTime() + 60*60*1000);
                 const eventEndTime = endTimeDate.toISOString().slice(0, 19) + "-04:00";
@@ -168,27 +176,51 @@ function useAppointment() {
                 console.log(appointmentData)
                 AppointmentDataService.create(appointmentData) // Using the service
                     .then(response => {
-                        console.log('Appointment created successfully:', response.data);
-                        setAppointmentConfirmed(true);
-                        navigate('/callback', { 
-                            state: {
-                                clientInfo, 
-                                selectedService,
-                                selectedBarber,
-                                eventStartTime,
-                                eventEndTime,
-                                appointmentConfirmed: true
-                            }
-                        });
+                        setIsSubmitting(false); // Stop loading
+                        setShowSuccessCheckmark(true); // Show success checkmark
+
+                        setTimeout(() => {
+                            setShowSuccessCheckmark(false); // Hide checkmark after some time
+                            setAppointmentConfirmed(true); // Proceed to showing appointment confirmed info
+
+                            navigate('/callback', { 
+                                state: {
+                                    clientInfo, 
+                                    selectedService,
+                                    selectedBarber,
+                                    eventStartTime,
+                                    eventEndTime,
+                                    appointmentConfirmed: true
+                                }
+                            });
+                        }, 4000); // Adjust time as needed
                     })
                     .catch(error => {
                         console.error('Error creating appointment:', error.response.data);
+                        setIsSubmitting(false); // Stop loading on error
                     });
             }
         }
     };
 
     const renderStepContent = () => {
+        if (isSubmitting) {
+            return (
+                <div className="success-container">
+                    <TailSpin color="#00BFFF" height={80} width={80} />
+                </div>
+            );
+        }
+    
+        if (showSuccessCheckmark) {
+            return (
+                <div className="success-container">
+                    <FaCheckCircle size={80} color="green" />
+                </div>
+            );
+        }
+        
+
         if (appointmentConfirmed) {
             return (
                 <>
@@ -206,10 +238,22 @@ function useAppointment() {
         }
         switch (currentStep) {
             case 1:
-                return <ServiceSelection onServiceSelect={setSelectedService} initialValue={selectedService} />;
+                return (
+                    <div className="row">
+                        <div className="col-md-8 offset-md-2">
+                            <ServiceSelection onServiceSelect={setSelectedService} initialValue={selectedService} />
+                        </div>
+                    </div>
+                );
             case 2:
-                return <BarberSelection onBarberSelect={setSelectedBarber} initialValue={selectedBarber} />;
-            case 3:
+                return (
+                    <div className="row">
+                        <div className="col-md-8 offset-md-2">
+                            <BarberSelection onBarberSelect={setSelectedBarber} initialValue={selectedBarber} />
+                        </div>
+                    </div>
+                );
+            case 3: 
                 return (
                     <BarberCalendar 
                         selectedBarber={selectedBarber}
@@ -222,8 +266,15 @@ function useAppointment() {
             case 4:
                 return (
                     <>
-                        <ClientInfoForm clientInfo={clientInfo} errors={errors} handleInputChange={handleInputChange} />
-                        <button onClick={submitForm}>Book Now</button>
+                        <div className="row">
+                            <div className="col-md-8 offset-md-2">
+                                <h4 className="text-center">Enter your information:</h4>
+                                <ClientInfoForm clientInfo={clientInfo} errors={errors} handleInputChange={handleInputChange} />
+                                <div className="button-container">
+                                    <button className="book-now-btn" onClick={submitForm}>Book Now</button>
+                                </div>
+                            </div>
+                        </div>  
                     </>
                 );
             default:

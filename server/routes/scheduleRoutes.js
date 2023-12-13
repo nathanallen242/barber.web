@@ -11,4 +11,8 @@ router.route("/").get(protect, employeesSchedule.findAll);
 // Retrieve/Update/Delete a single EmployeesSchedule with id
 router.route("/:id").get(employeesSchedule.findOne)
 
+// New route for fetching weekly availability of a barber
+router.route('/weekly-availability/:id').get(employeesSchedule.getWeeklyAvailability);
+
+
 module.exports = router;

@@ -4,6 +4,7 @@ import CustomCalendar from '../../services/calendar.js';
 
 function BarberCalendar({ selectedBarber, onDateSelect, onTimeSlotSelect }) {
     const [availableSlots, setAvailableSlots] = useState([]);
+    const [weeklyAvailability, setWeeklyAvailability] = useState([]);
     
     const [selectedDate, setSelectedDate] = useState(() => {
         const storedDate = localStorage.getItem('selectedDate');
@@ -20,6 +21,20 @@ function BarberCalendar({ selectedBarber, onDateSelect, onTimeSlotSelect }) {
             localStorage.setItem('selectedSlot', selectedSlot);
         }
     }, [selectedBarber, selectedDate, selectedSlot]);
+
+    useEffect(() => {
+        // Assuming `selectedBarber` is the currently selected barber object
+        fetchWeeklyAvailability(selectedBarber.employee_id);
+    }, [selectedBarber]);
+
+    const fetchWeeklyAvailability = async (employeeId) => {
+        try {
+            const response = await axios.get(`http://localhost:8080/api/schedules/weekly-availability/${employeeId}`);
+            setWeeklyAvailability(response.data);
+        } catch (error) {
+            console.error("Failed to fetch weekly availability", error);
+        }
+    };
 
     const fetchAvailableSlotsForDate = async (date) => {
         if (onDateSelect) {
@@ -60,7 +75,8 @@ function BarberCalendar({ selectedBarber, onDateSelect, onTimeSlotSelect }) {
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                <CustomCalendar 
+                <CustomCalendar
+                    weeklyAvailability={weeklyAvailability}
                     onDateClick={fetchAvailableSlotsForDate}
                     availableSlots={availableSlots}
                     onSlotClick={(slot) => {
