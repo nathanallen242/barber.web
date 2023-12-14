@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { ColorRing } from 'react-loader-spinner';
+import { TailSpin } from 'react-loader-spinner';
 import { useLocation } from 'react-router-dom';
 import api from '../../services/api.js';
 import AppointmentContext from '../../contexts/AppointmentContext.js';
@@ -21,7 +21,7 @@ function GoogleCallback() {
         if (response.status === 200) {
           // Timeout before re-directing to appointments page
           setTimeout(() => {
-            window.location.href = '/appointments';
+            window.location.href = '/';
           }, 5000); // 5-second delay
         }
       } catch (error) {
@@ -34,17 +34,16 @@ function GoogleCallback() {
   }, [code, appointmentData]);
 
   return (
-    <div>
-      Initiating Google Authentication Process...
-      <ColorRing
-        visible={true}
-        height="80"
-        width="80"
-        ariaLabel="blocks-loading"
-        wrapperStyle={{}}
-        wrapperClass="blocks-wrapper"
-        colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+    <div className="google-callback-container">
+      <TailSpin
+        height="100" /* Increased size */
+        width="100"  /* Increased size */
+        color="#4fa94d" /* Choose your color */
+        ariaLabel="loading"
       />
+      <div className="google-callback-text">
+        Initiating Google Authentication Process...
+      </div>
     </div>
   );
 }

@@ -215,7 +215,7 @@ function useAppointment() {
         if (showSuccessCheckmark) {
             return (
                 <div className="success-container">
-                    <FaCheckCircle size={80} color="green" />
+                    <FaCheckCircle size={50} color="green" />
                 </div>
             );
         }

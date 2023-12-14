@@ -8,6 +8,22 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+/* Google Callback */
+.google-callback-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full height of the viewport */
+  text-align: center;
+}
+
+.google-callback-text {
+  font-size: 1.2em; /* Slightly larger text */
+  margin-bottom: 20px; /* Spacing between text and spinner */
+}
+
+
 /* Modal Overlay on Callback */
 .modal-background {
   position: fixed;
@@ -128,7 +144,7 @@ body {
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  height: 100vh; /* Take up full viewport height */
+  height: 50vh; /* Take up full viewport height */
 }
 
 /* Optional: You might want to add some animation or transition for the appearance of the checkmark */
