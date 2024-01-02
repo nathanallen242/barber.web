@@ -1,6 +1,6 @@
-# Barber.io - Client Management Application
+# barber.web - Client Management Application
 
-Welcome to **Barber.io**, a client management application designed to streamline and enhance the operations of your barbershop business. This application allows you to manage your clients' appointments, preferences, and records, making your barbershop experience more efficient and customer-centric.
+Welcome to **barber.web**, a client management application designed to streamline and enhance the operations of your barbershop business. This application allows you to manage your clients' appointments, preferences, and records, making your barbershop experience more efficient and customer-centric.
 
 ## Features
 
@@ -18,11 +18,11 @@ Welcome to **Barber.io**, a client management application designed to streamline
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/nathanallen242/barber.io.git
+   git clone https://github.com/nathanallen242/barber.web.git
 
 2. Install dependencies:
    ```bash
-   cd barber.io
+   cd barber.web
    npm install
 
 3. Start the application:
